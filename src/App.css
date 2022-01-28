@@ -1,4 +1,6 @@
 @import 'styles/DiaryEditor.css';
+@import 'styles/DiaryItem.css';
+@import 'styles/DiaryList.css';
 
 * {
   box-sizing: border-box;

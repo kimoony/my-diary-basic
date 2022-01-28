@@ -1,0 +1,25 @@
+.item-box {
+  /* border: 1px solid gray; */
+  border: 0;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+  /* background-color: rgb(240, 240, 240); */
+  background-color: #cfd6e6;
+  box-shadow: 7px 5px 5px rgba(225, 225, 225, 1);
+}
+
+.info {
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.date {
+  color: rgba(0, 0, 0, .4)
+}
+
+.content {
+  font-weight: 600;
+  margin: 25px 0;
+}

@@ -40,7 +40,7 @@ function DiaryEditor() {
         ref={authorInput}
         name="author"
         type="text"
-        placeholder="작성자명 입력해주세요"
+        placeholder="작성자명 입력해주세요 (1글자 이상)"
         value={state.author}
         onChange={handleChageState}
       />
@@ -48,7 +48,7 @@ function DiaryEditor() {
         <textarea
           ref={contentInput}
           name="content"
-          placeholder="내용"
+          placeholder="내용을 입력해주세요 (최소 5글자 이상)"
           value={state.content}
           onChange={handleChageState}
         />
