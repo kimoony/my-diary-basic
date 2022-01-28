@@ -1,43 +1,47 @@
+import { useState, useRef } from 'react';
 import DiaryEditor from './components/DiaryEditor';
 import DiaryList from './components/DiaryList';
 import './App.css';
 
-const diaryList = [
-  {
-    id: 1,
-    author: "김훈",
-    content: "안녕하세요우~",
-    emotion: 3,
-    created_date: new Date().getTime(),
-  },
-  {
-    id: 2,
-    author: "하로",
-    content: "하로는 기분이 좋앙",
-    emotion: 5,
-    created_date: new Date().getTime(),
-  },
-  {
-    id: 3,
-    author: "피카츄",
-    content: "삐피까츄우 ~~",
-    emotion: 3,
-    created_date: new Date().getTime(),
-  },
-  {
-    id: 4,
-    author: "게스트",
-    content: "이런 일기장이 있군요?! 좋당",
-    emotion: 4,
-    created_date: new Date().getTime(),
-  },
-]
 
 function App() {
+  const [data, setData] = useState([]);
+
+  const dataId = useRef(0);
+
+  const onCreate = (author, content, emotion) => {
+    const created_date = new Date().getTime();
+    const newItem = {
+      author,
+      content,
+      emotion,
+      created_date,
+      id: dataId.current,
+    };
+    // 새로운 item을 만들고 id가 증가해야하기 때문에 만든 후 1 증가시킨다.
+    dataId.current += 1;
+    // setData에 새로 추가한 item을 넣어주고 기존에 data를 넣어준다.
+    setData([newItem, ...data])
+  }
+
+  const onDelete = (targetId) => {
+    console.log(`${targetId}가 삭제되었습니다.`);
+    const newDiaryList = data.filter((item) => item.id !== targetId);
+    setData(newDiaryList)
+  }
+
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((it) =>
+        it.id === targetId ? { ...it, content: newContent } : it
+      )
+    )
+  }
+
   return (
     <>
-      <DiaryEditor />
-      <DiaryList diaryList={diaryList} />
+      <DiaryEditor onCreate={onCreate} />
+      <DiaryList diaryList={data} onDelete={onDelete} onEdit={onEdit} />
     </>
   );
 }
