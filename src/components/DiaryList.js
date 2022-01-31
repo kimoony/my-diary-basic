@@ -10,7 +10,12 @@ function DiaryList({ diaryList, onDelete, onEdit }) {
       <div>
         {
           diaryList.map((diary) => (
-            <DiatyItem key={diary.id} {...diary} onDelete={onDelete} onEdit={onEdit} />
+            <DiatyItem
+              key={diary.id}
+              {...diary}
+              onDelete={onDelete}
+              onEdit={onEdit}
+            />
           ))
         }
       </div>
