@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 function DiatyItem({
   id,
@@ -9,6 +9,11 @@ function DiatyItem({
   onDelete,
   onEdit
 }) {
+
+  useEffect(() => {
+    console.log(`${id}번째 아이템 렌더~`)
+  })
+
   const [isEdit, setIsEdit] = useState(false);
   const [localContent, setLoclaContent] = useState(content);
 
@@ -71,4 +76,4 @@ function DiatyItem({
   );
 }
 
-export default DiatyItem;
+export default React.memo(DiatyItem);

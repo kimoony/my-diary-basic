@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import DiaryEditor from './components/DiaryEditor';
 import DiaryList from './components/DiaryList';
 import './App.css';
@@ -27,7 +27,7 @@ function App() {
     getData();
   }, [])
 
-  const onCreate = (author, content, emotion) => {
+  const onCreate = useCallback((author, content, emotion) => {
     const created_date = new Date().getTime();
     const newItem = {
       author,
@@ -39,21 +39,22 @@ function App() {
     // 새로운 item을 만들고 id가 증가해야하기 때문에 만든 후 1 증가시킨다.
     dataId.current += 1;
     // setData에 새로 추가한 item을 넣어주고 기존에 data를 넣어준다.
-    setData([newItem, ...data])
-  }
+    // 함수형 업데이트 setData에 함수를 전달한다.
+    setData((data) => [newItem, ...data])
+  }, []);  // 위에서 setData에 함수를 전달했기 때문에 디펜던시를 비워도 최신의 스테이트를 참고할 수 있다.
 
-  const onDelete = (targetId) => {
-    const newDiaryList = data.filter((item) => item.id !== targetId);
-    setData(newDiaryList)
-  }
+  const onDelete = useCallback((targetId) => {
+    // const newDiaryList = data.filter((item) => item.id !== targetId);
+    setData(data => data.filter((item) => item.id !== targetId))
+  }, []);
 
-  const onEdit = (targetId, newContent) => {
-    setData(
+  const onEdit = useCallback((targetId, newContent) => {
+    setData((data) =>
       data.map((it) =>
         it.id === targetId ? { ...it, content: newContent } : it
       )
     )
-  }
+  }, []);
 
 
   const getDiaryAnalysis = useMemo(() => {
