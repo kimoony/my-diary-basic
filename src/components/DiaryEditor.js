@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { DiaryDispatchContext } from '../App';
 
-function DiaryEditor({ onCreate }) {
+function DiaryEditor() {
   // const [author, setAuthor] = useState("");
   // const [content, setContent] = useState("");
 
-
-  useEffect(() => {
-    // console.log("DiaryEditor 렌더")
-  })
+  // App 컴포넌트에서 DiaryDispatchContext에 vlaue를 객체로 보내기 때문에 
+  // onCreate를 비구조할당으로 선언한다.
+  const { onCreate } = useContext(DiaryDispatchContext);
 
   const authorInput = useRef();
   const contentInput = useRef();

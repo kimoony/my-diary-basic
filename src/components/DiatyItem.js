@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useContext } from 'react';
+import { DiaryDispatchContext } from '../App';
 
 function DiatyItem({
   id,
@@ -6,13 +7,9 @@ function DiatyItem({
   content,
   emotion,
   created_date,
-  onDelete,
-  onEdit
 }) {
 
-  useEffect(() => {
-    console.log(`${id}번째 아이템 렌더~`)
-  })
+  const { onDelete, onEdit } = useContext(DiaryDispatchContext);
 
   const [isEdit, setIsEdit] = useState(false);
   const [localContent, setLoclaContent] = useState(content);

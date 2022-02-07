@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import DiatyItem from './DiatyItem';
+import { DiaryStateContext } from '../App';
+import { DiaryDispatchContext } from '../App';
 
-function DiaryList({ diaryList, onDelete, onEdit }) {
+function DiaryList() {
+  const diaryList = useContext(DiaryStateContext);
+
+  const { onDelete, onEdit } = useContext(DiaryDispatchContext);
 
   return (
     <div className="diaryList">
