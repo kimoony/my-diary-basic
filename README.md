@@ -12,6 +12,12 @@ https://kimoony.github.io/my-diary-basic/
 - 일기의 내용을 수정할 수 있다.
 - 일기를 삭제할 수 있다.
 
+# 개발환경
+- node 버전: v16.13.2
+- npm 버전: 8.1.2
+- package.json 파일에 scripts 부분 `"deploy": "gh-pages -d build"`, `"predeploy": "npm run build"` 추가한다.
+- `npm install gh-pages@3.2.3`설치한다.
+
 # 배포
 - `npm run deploy` 를 입력한다.
 - Git-Hub에 gs-pages를 통해 홈페이지를 볼 수 있다.
