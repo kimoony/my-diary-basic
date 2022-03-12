@@ -22,7 +22,15 @@ https://kimoony.github.io/my-diary-basic/
 
 # 시작
 - 해당 Repository를 clone 후 `npm install` 한다.
-- package.json 파일에 scripts 부분 `"deploy": "gh-pages -d build"`, `"predeploy": "npm run build"` 추가
+- package.json에 scripts 부분을 수정한다.
+```js
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "deploy": "gh-pages -d build",
+  "predeploy": "npm run build"
+},
+```
 - `npm install gh-pages@3.2.3` 설치한다.
 
 # 배포
