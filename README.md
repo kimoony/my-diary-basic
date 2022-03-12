@@ -16,12 +16,17 @@ https://kimoony.github.io/my-diary-basic/
 - node 버전: v16.13.2
 - npm 버전: 8.1.2
 
+# 기술스택
+- HTML, CSS, JavaScript
+- React
+
 # 시작
-- 해당 Repository를 clone 후 `npm install`
+- 해당 Repository를 clone 후 `npm install` 한다.
+- package.json 파일에 scripts 부분 `"deploy": "gh-pages -d build"`, `"predeploy": "npm run build"` 추가
+- `npm install gh-pages@3.2.3` 설치한다.
 
 # 배포
-- `npm install gh-pages@3.2.3` 설치한다.
-- package.json 파일에 scripts 부분 `"deploy": "gh-pages -d build"`, `"predeploy": "npm run build"` 추가
+- Git-Hub Repository 에 `gh-pages` branch 를 만든다.
 - `npm run deploy` 를 입력한다.
 - Git-Hub에 gs-pages를 통해 [페이지](https://kimoony.github.io/my-diary-basic/) 를 볼 수 있다.
 
